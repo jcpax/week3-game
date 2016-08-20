@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Psychic Game</h1>
+<h2>Can You Guess What I'm Thinking?</h2>
+<p>press any button to start playing!</p>
+<br>
+<div id="game">
+</div>
+
+<script type="text/javascript">
+	// Create an array that lists out all of the options
+var options = ['a','c','c', 'd', 'e', 'f', 'g' , 'h', 'i', 'j,', 'k', 'l', 'm', 'n' , 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+console.log(options);
+var wins= 0;
+var losses= 0;
+var guessesLeft = 10;
+
+
+// Captures Key Clicks
+document.onkeyup = function(event){
+
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+	console.log('userGuess', userGuess);
+
+
+	var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+	console.log('computerGuess', computerGuess);
+
+// Determine if guess is right or wrong
+
+if (userGuess == computerGuess){
+	wins++;
+	} else {
+	losses++;
+	guessesLeft = guessesLeft -1;	
+			console.log("wins", wins);
+			console.log("losses", losses);
+	}
+
+
+document.querySelector('#game').innerHTML ='wins: ' + wins + '<br> losses ' + losses + '<br> Guesses Left ' + guessesLeft + '<br>You Have Guessed ' + userGuess;
+
+var userGuessArray = userGuess;
+userGuessArray = [];
+ userGuessArray.push(userGuess);
+
+}
+</script>
+
+</body>
+</html>
